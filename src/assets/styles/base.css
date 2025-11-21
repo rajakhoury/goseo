@@ -1,0 +1,13 @@
+/* Base styles with higher specificity */
+#root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+/* Reset Chrome extension's default body styles */
+body {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}

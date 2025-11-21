@@ -1,0 +1,72 @@
+{
+  "name": "goseo",
+  "version": "1.0.0",
+  "description": "Chrome extension for on-page SEO analysis",
+  "author": {
+    "name": "Raja Khoury",
+    "email": "raja.khoury@gmail.com",
+    "url": "https://github.com/rajakhoury"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajakhoury/goseo"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "npm run copy-web-vitals && chokidar \"src/**/*\" \"popup.html\" -c \"vite build --mode development\" --initial",
+    "build": "npm run clean && npm run generate-icons && npm run copy-web-vitals && tsc && vite build --mode production",
+    "clean": "rimraf dist",
+    "generate-icons": "tsx scripts/generate-icons.ts",
+    "copy-web-vitals": "tsx scripts/copy-web-vitals.ts",
+    "lint": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "zip": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Compress-Archive -Path .\\dist\\* -DestinationPath .\\goseo-$env:npm_package_version.zip -Force\"",
+    "package": "npm run build && npm run zip"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "clsx": "^2.0.0",
+    "jszip": "^3.10.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+    "web-vitals": "^5.1.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@types/chrome": "^0.1.31",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.47.0",
+    "@typescript-eslint/parser": "^8.47.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.16",
+    "chokidar-cli": "^3.0.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.1.2",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.18",
+    "tsx": "^4.20.6",
+    "typescript": "^5.2.2",
+    "vite": "^6.4.1"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "es5"
+  }
+}
